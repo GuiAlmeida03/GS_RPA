@@ -94,7 +94,7 @@ flowchart LR
 > Preview do e-mail **REAL** enviado pela API via Gmail SMTP
 
 <p align="center">
-  <img src="docs/email_example.png" width="650" alt="Exemplo de e-mail enviado">
+  <img src="docs/exemplo.png" width="650" alt="Exemplo de e-mail enviado">
 </p>
 
 *💡 O sistema gera automaticamente respostas empáticas personalizadas baseadas na classificação de urgência.*
