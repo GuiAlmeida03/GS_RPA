@@ -5,6 +5,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Status](https://img.shields.io/badge/POC-Finalizada-brightgreen)
 
 > Trabalho acadêmico desenvolvido para FIAP — Global Solution (Graduação)
 
@@ -28,6 +29,17 @@ O **MentalHealth Shield** é uma prova de conceito (POC) que demonstra como a au
 - 🎫 Criação de tickets internos
 - 📧 Envio de e-mails reais via SMTP (Gmail)
 
+### 🧱 Stack Utilizada
+
+| Tecnologia | Uso |
+|-----------|-----|
+| Python 3.11+ | Runtime principal |
+| FastAPI | Exposição da API REST |
+| Regex-based NLP | Extração e classificação de texto |
+| Gmail SMTP (App Password) | Envio real de e-mails |
+| JSONL | Persistência de tickets e auditoria |
+| Pydantic | Validação de dados |
+
 ---
 
 ## 🏗️ Arquitetura
@@ -41,6 +53,51 @@ flowchart LR
     D --> F[SMTP SEND REAL]
     E --> G[Audit + Ticket JSONL]
 ```
+
+**Diagrama Alternativo (ASCII):**
+```
+┌─────────────────┐
+│ POST /ingest    │
+│    /email       │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│   NLP Extract   │
+│  (Regex-based)  │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Classificação   │
+│  P1 / P2 / P3   │
+│      / P4       │
+└────┬───────┬────┘
+     │       │
+     ▼       ▼
+┌─────────┐ ┌──────────────┐
+│ E-mail  │ │   Briefing   │
+│Empático │ │   Interno    │
+└────┬────┘ └──────┬───────┘
+     │             │
+     ▼             ▼
+┌─────────┐ ┌──────────────┐
+│  SMTP   │ │ Audit +      │
+│  SEND   │ │ Ticket JSONL │
+└─────────┘ └──────────────┘
+```
+
+---
+
+## 📧 Exemplo de Resposta Real
+
+> Preview do e-mail **REAL** enviado pela API via Gmail SMTP
+
+<p align="center">
+  <img src="docs/email_example.png" width="650" alt="Exemplo de e-mail enviado">
+</p>
+
+*💡 O sistema gera automaticamente respostas empáticas personalizadas baseadas na classificação de urgência.*
 
 ---
 
@@ -112,10 +169,26 @@ MentalHealth-Shield/
 ├── data/
 │   ├── tickets.jsonl
 │   └── audit.jsonl
+├── docs/
+│   └── email_example.png
 ├── .env.example
 ├── requirements.txt
 └── README.md
 ```
+
+---
+
+## 🗺️ Roadmap Futuro
+
+Possíveis evoluções para versões futuras:
+
+- [ ] Integração com modelos de NLP avançados (BERT, GPT)
+- [ ] Dashboard web para visualização de métricas
+- [ ] Sistema de notificações via WhatsApp/Telegram
+- [ ] Machine Learning para melhorar classificação de urgência
+- [ ] Integração com sistemas de RH corporativos
+- [ ] Suporte multi-idioma
+- [ ] API de feedback para refinamento do modelo
 
 ---
 
