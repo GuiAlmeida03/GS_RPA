@@ -1,0 +1,15 @@
+# venv
+.venv/
+__pycache__/
+*.pyc
+
+# env secrets
+.env
+
+# runtime generated
+data/
+*.jsonl
+
+# IDE stuff
+.vscode/
+.idea/
